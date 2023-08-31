@@ -1,39 +1,29 @@
-import React,{useState} from 'react';
-import axios from 'axios';
+import {Routes, Route} from 'react-router-dom';
 import './App.css';
-import Cards from './components/Cards.jsx';
-import Nav from './components/Nav';
-
+import logo from './assets/rymLogo.png';
+import Home from './views/Home';
+import Detail from './views/Detail';
+import About from './views/About';
+import BackgroundVideo from './components/BackgroundVideo.jsx';
+import BackgroundMusic from './components/BackgroundMusic.jsx';
 
 function App() 
 {
-   const [characters, setCharacters] = useState([]);
-   
-   function searchHandler(id)
-   {
-      if(!characters.some(elem => elem.id === Number(id)))
-      {
-         axios(`https://rym2-production.up.railway.app/api/character/${id}?key=henrym-MateoBaravalle`).then(({data}) => {
-         if (data.name)
-            setCharacters((oldChars) => [...oldChars, data]);
-         }).catch(error => {
-            window.alert('¡No hay personajes con este ID!');
-            console.error('Error en la solicitud:', error);
-         });
-      }
-   }
-
-   function closeHandler(id)
-   {
-      setCharacters(characters.filter(Element => Element.id !== id));
-   }
-
    return (
       <div className='App'>
-         <Nav onSearch={searchHandler}/>
-         <Cards characters={characters} onClose={closeHandler}/>
+         <img src={logo} alt="rymApp.png" className='logo'/>
+         <BackgroundVideo/>
+         <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/Detail/:id' element={<Detail/>}/>
+            <Route path='/About' element={<About/>}/>
+            <Route path='*' element={<h1>404 Not Found</h1>}/>
+         </Routes>
+         <BackgroundMusic/>
       </div>
    );
-}
+};
 
 export default App;
+
+// `https://rym2-production.up.railway.app/api/character/${id}?key=henrym-MateoBaravalle`

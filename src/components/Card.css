@@ -1,0 +1,44 @@
+.card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-container:hover {
+  transform: scale(1.05);
+}
+  
+.close-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+  
+.close-button:hover {
+  background-color: #9c0e1a;
+}
+
+.card-container h2 {
+  margin: 10px 0;
+  color:#fff
+}
+  
+.card-container img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}

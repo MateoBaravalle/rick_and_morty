@@ -1,11 +1,11 @@
 import React from "react";
 import SearchBar from "./SearchBar"
 
-function Nav({onSearch})
+function Nav({onSearch, rand})
 {
     return (
         <div>
-            <SearchBar onSearch={onSearch}/>
+            <SearchBar onSearch={onSearch} rand={rand}/>
         </div>
     );
 }
